@@ -4,7 +4,7 @@
             QR Code content app
         </div>
         <div class="links">
-            <a href="">Github</a>
+            <a href="https://github.com/bakai-dev/qrcode-laravel">Github</a>
         </div>
     </section>
 </template>
