@@ -6142,7 +6142,7 @@ var staticRenderFns = [function () {
     staticClass: "links"
   }, [_c("a", {
     attrs: {
-      href: ""
+      href: "https://github.com/bakai-dev/qrcode-laravel"
     }
   }, [_vm._v("Github")])])]);
 }];
@@ -7393,7 +7393,7 @@ vue__WEBPACK_IMPORTED_MODULE_8__["default"].use(vue_axios__WEBPACK_IMPORTED_MODU
 var token = document.head.querySelector('meta[name="csrf-token"]');
 (axios__WEBPACK_IMPORTED_MODULE_1___default().defaults.headers.common["X-CSRF-TOKEN"]) = token.content;
 (axios__WEBPACK_IMPORTED_MODULE_1___default().defaults.headers.common["X-Requested-With"]) = 'XMLHttpRequest';
-(axios__WEBPACK_IMPORTED_MODULE_1___default().defaults.baseURL) = "http://127.0.0.1:8000/api/v1/";
+(axios__WEBPACK_IMPORTED_MODULE_1___default().defaults.baseURL) = "http://localhost:8000/api/v1/";
 (axios__WEBPACK_IMPORTED_MODULE_1___default().defaults.withCredentials) = true;
 
 // Response interceptor
@@ -7422,27 +7422,27 @@ axios__WEBPACK_IMPORTED_MODULE_1___default().interceptors.response.use(function 
   },
   options: {
     loginData: {
-      url: "http://127.0.0.1:8000/api/v1/" + 'auth/login',
+      url: "http://localhost:8000/api/v1/" + 'auth/login',
       redirect: {
         name: 'Qrcodes'
       }
     },
     logoutData: {
-      url: "http://127.0.0.1:8000/api/v1/" + 'auth/logout',
+      url: "http://localhost:8000/api/v1/" + 'auth/logout',
       redirect: {
         name: 'Login'
       },
       makeRequest: true
     },
     registerData: {
-      url: "http://127.0.0.1:8000/api/v1/" + 'auth/register',
+      url: "http://localhost:8000/api/v1/" + 'auth/register',
       method: 'POST',
       redirect: {
         name: 'Login'
       }
     },
     fetchData: {
-      url: "http://127.0.0.1:8000/api/v1/" + 'auth/me',
+      url: "http://localhost:8000/api/v1/" + 'auth/me',
       method: 'POST'
     },
     refreshData: {
