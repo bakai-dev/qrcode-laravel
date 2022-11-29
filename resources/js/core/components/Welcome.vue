@@ -5,7 +5,7 @@
     >
         <div class="top-right links">
             <template v-if="$auth.check()">
-                <router-link :to="{ name: 'Dashboard' }">
+                <router-link :to="{ name: 'Qrcodes' }">
                     {{ $t('home') }}
                 </router-link>
             </template>

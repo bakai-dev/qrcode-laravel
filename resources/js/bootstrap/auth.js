@@ -41,7 +41,7 @@ export default new VueAuth(Vue, {
         router : driverRouterVueRouter,
     },
     options : {
-        loginData: {url: process.env.MIX_API_ENDPOINT + 'auth/login', redirect: {name: 'Dashboard'}},
+        loginData: {url: process.env.MIX_API_ENDPOINT + 'auth/login', redirect: {name: 'Qrcodes'}},
         logoutData: {url: process.env.MIX_API_ENDPOINT + 'auth/logout', redirect: {name: 'Login'}, makeRequest: true},
         registerData: {url: process.env.MIX_API_ENDPOINT + 'auth/register', method: 'POST', redirect: {name: 'Login'}},
         fetchData: {url: process.env.MIX_API_ENDPOINT + 'auth/me', method: 'POST'},
