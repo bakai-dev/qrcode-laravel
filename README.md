@@ -11,7 +11,7 @@
 
 ## Extensions
 
-- BackEnd: [Laravel 8](https://laravel.com/)
+- BackEnd: [Laravel](https://laravel.com/)
 - FrontEnd: [Vue](https://vuejs.org) + [VueRouter](https://router.vuejs.org) + [Vuex](https://vuex.vuejs.org) + [VueI18n](https://kazupon.github.io/vue-i18n/)
 - Login using [JWT](https://jwt.io/) with [Vue-Auth](https://websanova.com/docs/vue-auth/home), [Axios](https://github.com/mzabriskie/axios) and [Sanctum](https://laravel.com/docs/8.x/sanctum).
 - [ElementUI](http://element.eleme.io/) UI Kit
