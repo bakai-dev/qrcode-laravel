@@ -1,5 +1,14 @@
 #### QR Code content app
 
+<p align="center">
+    <img width="100%" src="https://user-images.githubusercontent.com/13073820/204442472-05d02467-2e53-468a-aba2-b0e96b7cfce0.png" >
+</p>
+
+<p align="center">
+    <img width="100%" src="https://user-images.githubusercontent.com/13073820/204442486-00f3172b-f852-47ae-95b8-afce542f0f76.png" >
+</p>
+
+
 ## Extensions
 
 - BackEnd: [Laravel 8](https://laravel.com/)
