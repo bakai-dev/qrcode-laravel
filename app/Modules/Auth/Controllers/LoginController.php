@@ -13,6 +13,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 /**
  * Class LoginController
@@ -105,8 +107,10 @@ final class LoginController extends Controller
      *
      * @param Request $request
      * @return void
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
-    public function logout(Request $request)
+    public function logout(Request $request): void
     {
         $request->user()->currentAccessToken()->delete();
         app()->get('auth')->forgetGuards();

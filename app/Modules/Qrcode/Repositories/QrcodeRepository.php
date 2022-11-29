@@ -20,6 +20,8 @@ final class QrcodeRepository extends AbstractRepository
     protected $class = Qrcode::class;
 
     /**
+     * Get Resource list
+     *
      * @param Request $request
      * @return LengthAwarePaginator
      */
@@ -36,6 +38,8 @@ final class QrcodeRepository extends AbstractRepository
     }
 
     /**
+     * Save Resource
+     *
      * @param array $data
      * @return Qrcode
      */

@@ -6354,7 +6354,7 @@ var render = function render() {
   }, [_vm.$auth.check() ? [_c("router-link", {
     attrs: {
       to: {
-        name: "Dashboard"
+        name: "Qrcodes"
       }
     }
   }, [_vm._v("\n                " + _vm._s(_vm.$t("home")) + "\n            ")])] : [_c("router-link", {
@@ -7424,7 +7424,7 @@ axios__WEBPACK_IMPORTED_MODULE_1___default().interceptors.response.use(function 
     loginData: {
       url: "http://127.0.0.1:8000/api/v1/" + 'auth/login',
       redirect: {
-        name: 'Dashboard'
+        name: 'Qrcodes'
       }
     },
     logoutData: {
