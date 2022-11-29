@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Modules\Qrcode\Controllers;
 
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Modules\Qrcode\Repositories\QrcodeRepository;
+use App\Modules\Qrcode\Resources\QrcodeResource;
+use App\Modules\Qrcode\Requests\QrcodeRequest;
+use App\Modules\Qrcode\Service\QrcodeService;
 use App\Http\Controllers\Controller;
 use App\Modules\Qrcode\Model\Qrcode;
-use App\Modules\Qrcode\Requests\QrcodeRequest;
-use App\Modules\Qrcode\Resources\QrcodeResource;
-use App\Modules\Qrcode\Service\QrcodeService;
-use Exception;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\HtmlString;
+use Illuminate\Http\Request;
+use Exception;
 
 /**
  * Class QrcodeController
@@ -23,21 +23,25 @@ use Illuminate\Support\HtmlString;
 final class QrcodeController extends Controller
 {
     /**
+     * @var QrcodeRepository
+     */
+    protected QrcodeRepository $repository;
+
+    /**
+     * @param QrcodeRepository $repository
+     */
+    public function __construct(QrcodeRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    /**
      * @param Request $request
      * @return AnonymousResourceCollection
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        [$column, $order] = explode(',', $request->input('sortBy', 'id,asc'));
-        $pageSize = (int)$request->input('pageSize', 10);
-
-        $resource = Qrcode::query()
-            ->when($request->filled('search'), function (Builder $q) use ($request) {
-                $q->where(Qrcode::COLUMN_CONTENT, 'like', '%' . $request->search . '%');
-            })
-            ->orderBy($column, $order)->paginate($pageSize);
-
-        return QrcodeResource::collection($resource);
+        return QrcodeResource::collection($this->repository->list($request));
     }
 
     /**
@@ -47,8 +51,7 @@ final class QrcodeController extends Controller
     public function store(QrcodeRequest $request): HtmlString
     {
         $data = $request->validated();
-        $qrcode = new Qrcode($data);
-        $qrcode->save();
+        $qrcode = $this->repository->save($data);
         return QrcodeService::render($qrcode);
     }
 
@@ -72,8 +75,7 @@ final class QrcodeController extends Controller
     public function update(QrcodeRequest $request, Qrcode $qrcode): JsonResponse
     {
         $data = $request->validated();
-        $qrcode->fill($data)->save();
-
+        $this->repository->update($data, $qrcode);
         return response()->json([
             'type' => self::RESPONSE_TYPE_SUCCESS,
             'message' => 'Successfully updated',
@@ -87,8 +89,7 @@ final class QrcodeController extends Controller
      */
     public function destroy(Qrcode $qrcode): JsonResponse
     {
-        $qrcode->delete();
-
+        $this->repository->delete($qrcode->id);
         return response()->json([
             'type' => self::RESPONSE_TYPE_SUCCESS,
             'message' => 'Successfully deleted',

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Qrcode
  * @package App\Models
  * @property string content
+ * @property int id
  * @property int size
  * @property string background_color
  * @property string fill_color
